@@ -1,0 +1,244 @@
+.app-shell {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 12% 2%, rgba(124, 124, 232, 0.13), transparent 27rem),
+    radial-gradient(circle at 88% 28%, rgba(100, 210, 197, 0.1), transparent 25rem),
+    #f7f8fc;
+}
+
+.app-shell::before,
+.app-shell::after {
+  position: absolute;
+  z-index: 0;
+  border-radius: 999px;
+  content: '';
+  filter: blur(2px);
+  pointer-events: none;
+}
+
+.app-shell::before {
+  width: 220px;
+  height: 220px;
+  top: -120px;
+  right: 8%;
+  border: 1px solid rgba(91, 91, 214, 0.12);
+}
+
+.app-shell::after {
+  width: 360px;
+  height: 360px;
+  bottom: -260px;
+  left: -80px;
+  border: 1px solid rgba(91, 91, 214, 0.1);
+}
+
+.app-container {
+  position: relative;
+  z-index: 1;
+  display: flex !important;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 24px;
+  padding-top: 64px;
+  padding-bottom: 32px;
+}
+
+.hero {
+  position: relative;
+  max-width: 670px;
+  margin: 0 auto 8px;
+  text-align: center;
+}
+
+.hero .brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 16px;
+  color: #fff;
+  border-radius: 14px;
+  background: linear-gradient(145deg, #7777ec, #4d4dc7);
+  box-shadow: 0 12px 28px rgba(91, 91, 214, 0.28);
+  transform: rotate(-4deg);
+}
+
+.hero .eyebrow-chip {
+  position: absolute;
+  top: 10px;
+  margin-left: 12px;
+  color: #5557ad;
+  border: 1px solid #dddffa;
+  background: rgba(255, 255, 255, 0.68);
+  font-weight: 700;
+}
+
+.hero h1 {
+  margin-bottom: 14px;
+  font-size: clamp(2.35rem, 6vw, 3.75rem);
+  line-height: 1.05;
+}
+
+.hero .accent-text {
+  color: #5b5bd6;
+}
+
+.hero > p {
+  max-width: 590px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.composer-card,
+.reply-card {
+  padding: 28px;
+  border: 1px solid rgba(220, 221, 234, 0.88);
+  border-radius: 20px !important;
+  background: rgba(255, 255, 255, 0.92) !important;
+  box-shadow: 0 22px 60px rgba(35, 37, 71, 0.08) !important;
+  backdrop-filter: blur(14px);
+}
+
+.card-heading,
+.reply-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.card-heading > span {
+  flex-shrink: 0;
+  padding: 5px 9px;
+  border-radius: 7px;
+  background: #f2f2f8;
+}
+
+.controls-row {
+  display: grid;
+  grid-template-columns: minmax(190px, 0.7fr) minmax(220px, 1fr);
+  gap: 14px;
+}
+
+.tone-select {
+  min-width: 0 !important;
+}
+
+.status-alert {
+  margin-top: 18px;
+  border-radius: 10px !important;
+}
+
+.reply-card {
+  animation: reply-enter 320ms ease-out both;
+}
+
+.reply-header {
+  align-items: center;
+}
+
+.reply-header .MuiChip-root {
+  color: #5355ad;
+  background: #efefff;
+  font-weight: 700;
+}
+
+.reply-content {
+  min-height: 190px;
+  padding: 24px;
+  overflow-wrap: anywhere;
+  border: 1px solid #e2e3ed;
+  border-radius: 14px;
+  background: #fbfbfe;
+}
+
+.reply-content .MuiTypography-root {
+  color: #303146;
+  line-height: 1.75;
+  white-space: pre-wrap;
+}
+
+footer.MuiTypography-root {
+  margin-top: 2px;
+  text-align: center;
+}
+
+@keyframes reply-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 700px) {
+  .app-container {
+    gap: 18px;
+    padding-top: 36px;
+    padding-bottom: 24px;
+  }
+
+  .hero .eyebrow-chip {
+    position: static;
+    display: flex;
+    width: max-content;
+    margin: 0 auto 14px;
+  }
+
+  .hero .brand-mark {
+    display: none;
+  }
+
+  .composer-card,
+  .reply-card {
+    padding: 20px;
+    border-radius: 16px !important;
+  }
+
+  .card-heading {
+    gap: 12px;
+  }
+
+  .controls-row {
+    grid-template-columns: 1fr;
+  }
+
+  .reply-header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .reply-header > .MuiStack-root:last-child {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+  }
+}
+
+@media (max-width: 430px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .card-heading > span {
+    display: none;
+  }
+
+  .reply-header > .MuiStack-root:last-child {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reply-card {
+    animation: none;
+  }
+}
