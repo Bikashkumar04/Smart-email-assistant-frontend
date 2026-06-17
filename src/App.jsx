@@ -163,7 +163,7 @@ function App() {
       console.error('Unable to generate reply:', requestError);
       setError(
         requestError.response?.data?.message ??
-          'We could not generate a reply. Check that the email service is running and try again.',
+          'We could not generate a reply. The server may be unavailable — please try again later.',
       );
     } finally {
       setLoading(false);
